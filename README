@@ -1,0 +1,48 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=485
+
+This is a normal PLUGIN not ftplugin.
+
+Marker chars are configurable.
+You can define global or buffer variables to specify the marker chars for both left and right chars. Buffer vars if present are used before global chars 
+g:L_Marker
+b:L_Marker
+g:R_Marker
+b:R_Marker
+
+The default marker chars are the same as Luc Hermitte's bracketing.base.vim which is the same as Stephen Riehm's braketing macros. Which is to say «»
+
+If you do not have digraphs enabled these chars are still easy to insert via 
+<c-k><< which gives you  '«' and <c-k>>> which is '»' (far easier to use the included commands however)
+
+:MN        Search forward for the next occurance of marker chars
+:MP        Search backwards for the next occurance of marker chars
+:MI          Insert marker chars, usefull for <c-o>:MI text to have markers around it<cr>
+:MIV       Wrap the visual selection (single line) with marker chars
+:MA        Append marker chars (like a)
+:MAV     Same as :MIV
+:MS        Strip marker chars, positioning is a touch picky; place cursor in the markers and all is well.
+
+Insert mode mappings:
+<plug>MjMark         Defaults to `¡mark!`        Insert marker chars, cursor AFTER the marker chars.
+<plug>MjJump        Defaults to `¡jump!`        Jump to the next marker (as :MN)
+
+VISUAL mode mappings:
+<plug>MjMark         Defaults to `¡mark!`        Wrap marker chars around the selection. (as MIV)
+
+NOTE if you already have insert and or visual mappings for ¡mark!/¡jump! these will NOT be made.
+
+Key mappings:
+<plug>MjPrev           Defaults to <M-Insert> in normal, insert and visual.       Jumps to previous markers, as :MP
+<plug>MjNext             Defaults to <M-Del> in normal, insert and visual.        Jumps to next marker, as :MN
+<plug>MjInsMarker        Defaults to <M-m> in insert.       Shortcut for `<c-o>:MI ` Just hit <m-m>type your words<cr>
+
+If there is gui and has menu adds the following plugin menu items:
+Plugin.markjump.Prev  Marker
+Plugin.markjump.Next Marker
+Plugin.markjump.Insert Marker
+Plugin.markjump.Append Marker
+Plugin.markjump.Strip Markers
+
+Strip markers mens to remove the marker chars from either side; cursor generally needs to be within the marker chars.
+
+This script would not be what it is with out Luc Hermitte's input!
